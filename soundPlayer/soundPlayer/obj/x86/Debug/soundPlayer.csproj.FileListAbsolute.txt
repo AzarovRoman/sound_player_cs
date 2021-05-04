@@ -1,0 +1,10 @@
+J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\soundPlayer.exe.config
+J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\soundPlayer.exe
+J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\soundPlayer.pdb
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.Form1.resources
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.Properties.Resources.resources
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.csproj.GenerateResource.cache
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.csproj.CoreCompileInputs.cache
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.exe
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.pdb
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.csprojAssemblyReference.cache
