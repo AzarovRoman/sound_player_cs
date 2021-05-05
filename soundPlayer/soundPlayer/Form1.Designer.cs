@@ -40,9 +40,9 @@ namespace soundPlayer
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -136,14 +136,6 @@ namespace soundPlayer
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(15, 204);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(241, 23);
-            this.progressBar1.TabIndex = 10;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -151,18 +143,28 @@ namespace soundPlayer
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 252);
+            this.trackBar1.Location = new System.Drawing.Point(15, 198);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(244, 45);
             this.trackBar1.TabIndex = 11;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(181, 117);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "shuffle";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 340);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox1);
@@ -194,9 +196,9 @@ namespace soundPlayer
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Button button3;
     }
 }
 
