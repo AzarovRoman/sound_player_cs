@@ -18,6 +18,7 @@ namespace soundPlayer
         int duration = 0;
         double CurrentPos = 0;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace soundPlayer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            trackBar1.Enabled = false;
+            trackBar1.Enabled = true;
             trackBar1.TickStyle = TickStyle.Both;
             player = new SoundPlayer();
             timer1.Enabled = true;
@@ -61,7 +62,6 @@ namespace soundPlayer
                     playMusic(index);
 
                 }
-
             }
             catch (NullReferenceException)
             {
@@ -128,23 +128,7 @@ namespace soundPlayer
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            if (fileName != "")
-            {
-                try
-                {
-                    CurrentPos = 0;
-                    index += 1;
-                    playMusic(index);
-                    listBox1.SetSelected(index, true);
-                }
-                catch (Exception)
-                {
-                    CurrentPos = 0;
-                    index = 0;
-                    playMusic(index);
-                    listBox1.SetSelected(index, true);
-                }
-            }
+            NextTrek();
         }
 
         bool DurationReady = false;
@@ -157,13 +141,12 @@ namespace soundPlayer
             wplayer.controls.play();
         }
 
-        private void playMusic(string path)
+        /*private void playMusic(string path)
         {
             int dur = Convert.ToInt32(wplayer.currentMedia.duration);
             wplayer.URL = textBox1.Text = path;
             wplayer.controls.play();
-
-        }
+        }*/
 
         private void progressBar1_Click(object sender, EventArgs e)
         {
@@ -184,8 +167,21 @@ namespace soundPlayer
                 trackBar1.Maximum = duration;
                 DurationReady = true;
             }
-            trackBar1.Value = Convert.ToInt32(wplayer.controls.currentPosition);
-            DurationReady = false;
+
+            try
+            {
+                trackBar1.Value = Convert.ToInt32(wplayer.controls.currentPosition);
+                if (trackBar1.Value == trackBar1.Maximum)
+                {
+                    NextTrek();
+                }
+                DurationReady = false;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                trackBar1.Value = 0;
+                DurationReady = false;
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -228,6 +224,43 @@ namespace soundPlayer
             {
                 listBox1.Items.Add(str);
             }
+        }
+
+        private void NextTrek()
+        {
+            if (fileName != "")
+            {
+                try
+                {
+                    CurrentPos = 0;
+                    index += 1;
+                    playMusic(index);
+                    listBox1.SetSelected(index, true);
+                }
+                catch (Exception)
+                {
+                    CurrentPos = 0;
+                    index = 0;
+                    playMusic(index);
+                    listBox1.SetSelected(index, true);
+                }
+            }
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            int Volume = trackBar2.Value;
+            wplayer.settings.volume = Volume;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        {
+            wplayer.controls.currentPosition = trackBar1.Value;
         }
     }
 }
