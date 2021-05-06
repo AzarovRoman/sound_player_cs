@@ -8,7 +8,6 @@ J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.cspro
 J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.exe
 J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.pdb
 J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.csprojAssemblyReference.cache
-J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\taglib-sharp.dll
 J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.csproj.CopyComplete
 J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\Microsoft.Win32.Registry.dll
 J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\NAudio.Asio.dll
@@ -24,3 +23,8 @@ J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\Microsoft.Win32.R
 J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\NAudio.xml
 J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\System.Security.AccessControl.xml
 J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\System.Security.Principal.Windows.xml
+J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\soundPlayer.exe.manifest
+J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\soundPlayer.application
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.exe.manifest
+J:\study\sound_player_cs\soundPlayer\soundPlayer\obj\x86\Debug\soundPlayer.application
+J:\study\sound_player_cs\soundPlayer\soundPlayer\bin\x86\Debug\AxInterop.WMPLib.dll

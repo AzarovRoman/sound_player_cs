@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
@@ -22,8 +16,7 @@ namespace soundPlayer
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();
         string[] musicList;
         int duration = 0;
-        
-
+        double CurrentPos = 0;
 
         public Form1()
         {
@@ -44,19 +37,46 @@ namespace soundPlayer
         {
             try
             {
-                index = listBox1.SelectedIndex;
-                fileName = MainPath + "\\" + listBox1.SelectedItem.ToString();
-                playMusic(index);
+                if (CurrentPos == 0)
+                {
+                    index = listBox1.SelectedIndex;
+                    if (index == -1)
+                    {
+                        index = 0;
+                    }
+
+                    fileName = MainPath + "\\" + listBox1.Items[index].ToString();
+                    playMusic(index);
+
+                }
+                else
+                {
+                    index = listBox1.SelectedIndex;
+                    if (index == -1)
+                    {
+                        index = 0;
+                    }
+
+                    fileName = MainPath + "\\" + listBox1.Items[index].ToString();
+                    playMusic(index);
+
+                }
+
             }
-            catch (Exception ex)
+            catch (NullReferenceException)
             {
-                MessageBox.Show($"{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Похоже, вы ничего не выбрали :(", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Похоже, вы ничего не выбрали :(", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             wplayer.controls.pause();
+            CurrentPos = wplayer.controls.currentPosition;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -85,6 +105,8 @@ namespace soundPlayer
             DirDialog.Description = "Выбор директории";
             DirDialog.SelectedPath = @"C:\";
 
+            listBox1.Items.Clear();
+
             if (DirDialog.ShowDialog() == DialogResult.OK)
             {
                 return DirDialog.SelectedPath;
@@ -106,39 +128,41 @@ namespace soundPlayer
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            try
+            if (fileName != "")
             {
-                index += 1;
-                playMusic(index);
-                listBox1.SetSelected(index, true);
-            }
-            catch (Exception ex)
-            {
-                index = 0;
-                playMusic(index);
-                listBox1.SetSelected(index, true);
+                try
+                {
+                    CurrentPos = 0;
+                    index += 1;
+                    playMusic(index);
+                    listBox1.SetSelected(index, true);
+                }
+                catch (Exception)
+                {
+                    CurrentPos = 0;
+                    index = 0;
+                    playMusic(index);
+                    listBox1.SetSelected(index, true);
+                }
             }
         }
 
         bool DurationReady = false;
         private void playMusic(int id)
         {
-            //TagLib.File f = TagLib.File.Create(listBox1.Items[id].ToString(), TagLib.ReadStyle.Average);
-            //var duration = (int)f.Properties.Duration.TotalSeconds;
             int dur = Convert.ToInt32(wplayer.currentMedia.duration);
-            wplayer.URL = textBox1.Text = MainPath + '\\' +listBox1.Items[id].ToString();
+            wplayer.URL = MainPath + '\\' +listBox1.Items[id].ToString();
+            textBox1.Text = listBox1.Items[id].ToString();
+            wplayer.controls.currentPosition = CurrentPos;
             wplayer.controls.play();
-            //wplayer.controls.currentPosition;
         }
 
         private void playMusic(string path)
         {
-            //TagLib.File f = TagLib.File.Create(path, TagLib.ReadStyle.Average);
-            //var duration = (int)f.Properties.Duration.TotalSeconds;
             int dur = Convert.ToInt32(wplayer.currentMedia.duration);
             wplayer.URL = textBox1.Text = path;
             wplayer.controls.play();
-            //wplayer.controls.currentPosition;
+
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -157,7 +181,6 @@ namespace soundPlayer
             duration = Convert.ToInt32(wplayer.currentMedia.duration);
             if (wplayer.currentMedia.duration > 0 && DurationReady == false)
             {
-                //trackBar1.Enabled = true;
                 trackBar1.Maximum = duration;
                 DurationReady = true;
             }
@@ -178,12 +201,8 @@ namespace soundPlayer
             return res;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//shuffle
         {
-            //Console.WriteLine(listBox1.Items[0].ToString());
-            //Console.WriteLine(listBox1.Items[1].ToString());
-            //Console.WriteLine(listBox1.Items[2].ToString());
-
             int MusicListCount = listBox1.Items.Count;
             List<string> ShuffledList = new List<string>();
 
@@ -208,28 +227,6 @@ namespace soundPlayer
             foreach (String str in ShuffledList)
             {
                 listBox1.Items.Add(str);
-            }
-        }
-
-        private void ShuffleList()
-        {
-            int MusicListCount = listBox1.Items.Count;
-            List<string> ShuffledList = new List<string>();
-
-            foreach (String strCol in listBox1.Items)
-            {
-                ShuffledList.Add(strCol);
-            }
-
-            Random rand = new Random();
-
-            for (int i = ShuffledList.Count - 1; i >= 1; i--)
-            {
-                int j = rand.Next(i + 1);
-
-                string tmp = ShuffledList[j];
-                ShuffledList[j] = ShuffledList[i];
-                ShuffledList[i] = tmp;
             }
         }
     }
